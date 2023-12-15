@@ -5,6 +5,7 @@ import com.wah.sem7_ipr2.service.RoomService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.hateoas.CollectionModel
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -25,9 +26,14 @@ class Controller(@Autowired val roomService: RoomService) {
         return ResponseEntity.ok(roomService.getById(id))
     }
 
-    @GetMapping("/{id}/reserve")
+    @PostMapping("/{id}/reserve")
     fun reserveRoom(@PathVariable(name = "id") id: Int): ResponseEntity<String> {
         return ResponseEntity.ok(id.toString())
+    }
+
+    @DeleteMapping("/{id}")
+    fun delete(@PathVariable(name = "id") id: Int): ResponseEntity<String> {
+        return ResponseEntity.ok(roomService.delete(id).toString())
     }
 
 }

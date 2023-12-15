@@ -16,4 +16,9 @@ class RoomService(@Autowired val roomRepository: RoomRepository) {
         return roomRepository.findById(id).orElse(Room())
     }
 
+    fun delete(id: Int): Int {
+        roomRepository.deleteById(id)
+        return id
+    }
+
 }

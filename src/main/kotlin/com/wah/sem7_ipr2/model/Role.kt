@@ -9,7 +9,7 @@ enum class Role(val id: Int) {
         fun getById(id: Int?): Role {
             return Arrays.stream(values())
                 .filter { role -> Objects.equals(role.id, id) }
-                .findFirst().orElse(null)
+                .findFirst().orElse(USER)
         }
 
         fun getByName(name: String?): Role {
